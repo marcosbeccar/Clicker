@@ -1,14 +1,15 @@
 const slaveCost = 15;
 const superSlaveCost = 150;
 const slaveInterval = 3000;
+const superSlaveInterval = 4000;
 const superSlaveValue = 5;
-const maxVisibleSlaves = 10; // Cantidad máxima de esclavos visibles antes de mostrar el indicador
+const maxVisibleSlaves = 10;
 
 let score = 0;
 let slaves = 0;
 let superSlaves = 0;
-let slaveTimers = [];
-let superSlaveTimers = [];
+let slaveTimer;
+let superSlaveTimer;
 
 function clickSquare() {
   score++;
@@ -51,13 +52,12 @@ function updateSlaveContainer(slaveCount, containerSelector, slaveType) {
   }
 
   if (slaveCount > maxVisibleSlaves) {
-    // Mostrar indicador de cantidad
     const indicator = document.createElement("span");
     indicator.innerText = ` (+${slaveCount - maxVisibleSlaves})`;
     container.appendChild(indicator);
   }
 
-  startSlaveTimers(container, slaveCount, slaveType, visibleCount);
+  startSlaveTimers();
 }
 
 function createSlaveElement(container, slaveType) {
@@ -66,23 +66,20 @@ function createSlaveElement(container, slaveType) {
   container.appendChild(slaveElement);
 }
 
-function startSlaveTimers(container, slaveCount, slaveType, visibleCount) {
-  const countToStart = Math.min(slaveCount, maxVisibleSlaves);
-  const timers = slaveType === "super-slave" ? superSlaveTimers : slaveTimers;
-
-  for (let i = 0; i < countToStart; i++) {
-    const slaveElement = container.children[i];
-    if (!timers[i]) {
-      timers[i] = startSlaveTimer(slaveElement, slaveInterval, slaveType === "super-slave" ? superSlaveValue : 1);
-    }
+function startSlaveTimers() {
+  if (!slaveTimer) {
+    slaveTimer = setInterval(function () {
+      score += slaves;
+      updateScore();
+    }, slaveInterval);
   }
-}
 
-function startSlaveTimer(slaveElement, interval, value) {
-  return setInterval(function () {
-    score += value;
-    updateScore();
-  }, interval);
+  if (!superSlaveTimer) {
+    superSlaveTimer = setInterval(function () {
+      score += superSlaves * superSlaveValue;
+      updateScore();
+    }, superSlaveInterval);
+  }
 }
 
 function initializeGame() {
