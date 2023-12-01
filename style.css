@@ -114,4 +114,27 @@ body {
     font-size: 14px;
     color: #777;
   }
+
+  @media screen and (max-width: 600px) {
+    #game-container {
+      width: 80%;
+    }
+  
+    #click-box {
+      width: 100px;
+      height: 100px;
+      font-size: 14px;
+    }
+  
+    .slave,
+    .super-slave {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .button {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
   
