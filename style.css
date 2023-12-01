@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(to bottom, #f39c12, #e74c3c);
-    font-family: 'Caveat', cursive;
+    font-family: 'Arial', sans-serif;
     color: #333;
   }
   
