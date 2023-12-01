@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Clicker Game</title>
+</head>
+<body>
+  <div id="game-container">
+    <div id="score-container">
+      <p>Score: <span id="score">0</span></p>
+    </div>
+    <div id="click-box"></div>
+    <div class="slave-container"></div>
+    <div class="super-slave-container"></div>
+    <div id="slaves-container">
+      <div class="button-container">
+        <p>Slaves: <span id="slaves">0</span> (Cost: 15)</p>
+        <button id="buy-button">Buy Slave</button>
+      </div>
+      <div class="button-container">
+        <p>Super Slaves: <span id="super-slaves">0</span> (Cost: 150)</p>
+        <button id="buy-super-button">Buy Super Slave</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
